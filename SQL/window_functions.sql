@@ -1,9 +1,9 @@
 ---input
 ---group_table
 --- group_id | score |
-    123      | 0.85
-    123      | 0.85
-    123      | 0.98
+--- 123      | 0.85
+--- 123      | 0.85
+--- 123      | 0.98
 
 --to rank (with tie) records within a partition (group in this case) in decreasing order of their score
 
