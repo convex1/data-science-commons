@@ -10,7 +10,8 @@
 
 --to rank (with tie) records within a partition (group in this case) in decreasing order of their score
 
-select group_id, sum(score) as sum_score, avg(score) avg_score, count(score) count_score from group_table;
+select group_id, sum(score) as sum_score, avg(score) avg_score, count(score) count_score from group_table
+group by group_id;
 
 ---output
 --- group_id | sum_score | avg_score | count_score
