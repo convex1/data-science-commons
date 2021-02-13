@@ -26,11 +26,10 @@ group_id | score | rank
 select group_id, score, row_number() over(partition by group_id order by score desc) rank;
 
 ---output
---- group_id | score | rank
-    123      | 0.98  | 1
-    123      | 0.85  | 2
-    123      | 0.76  | 3
-
+group_id | score | rank
+123      | 0.98  | 1
+123      | 0.85  | 2
+123      | 0.76  | 3
 
 
 
@@ -40,10 +39,10 @@ select group_id, score, row_number() over(partition by group_id order by score d
 select group_id, score, lag(score,1) over(partition by group_id) previous_score;
 
 ---output
---- group_id | score | rank
-    123      | 0.85  | null
-    123      | 0.85  | 0.85
-    123      | 0.98  | 0.85
+group_id | score | rank
+123      | 0.85  | null
+123      | 0.85  | 0.85
+123      | 0.98  | 0.85
 
 
 
@@ -53,10 +52,10 @@ select group_id, score, lag(score,1) over(partition by group_id) previous_score;
 select group_id, score, lead(score,1) over(partition by group_id) next_score;
 
 ---output
---- group_id | score | rank
-    123      | 0.85  | 0.85
-    123      | 0.85  | 0.98
-    123      | 0.98  | null
+group_id | score | rank
+123      | 0.85  | 0.85
+123      | 0.85  | 0.98
+123      | 0.98  | null
 
 
 
@@ -118,3 +117,15 @@ group_id | score | partition_last
 123      | 0.85  | 0.98
 123      | 0.85  | 0.98
 123      | 0.98  | 0.98
+
+
+
+--to calculate last value of within a partition (group in this case)
+
+select group_id, score, percent_rank over(partition by group_id order by score desc) percentage_rank;
+
+---output
+group_id | score | percentage_rank
+123      | 0.85  | 0
+123      | 0.85  | 0.5
+123      | 0.98  | 1
