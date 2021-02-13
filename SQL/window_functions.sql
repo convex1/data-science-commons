@@ -66,9 +66,9 @@ select group_id, score, lead(score,1) over(partition by group_id) next_score;
 select group_id, score, avg(score) over(partition by group_id) partition_average;
 
 ---output
-group_id | score | rank
-123      | 0.85  | 0.85
-123      | 0.85  | 0.85
+group_id | score | partition_average
+123      | 0.85  | 0.893
+123      | 0.85  | 0.893
 123      | 0.98  | 0.893
 
 
@@ -78,9 +78,9 @@ group_id | score | rank
 select group_id, score, sum(score) over(partition by group_id) partition_sum;
 
 ---output
-group_id | score | rank
-123      | 0.85  | 0.85
-123      | 0.85  | 1.70
+group_id | score | partition_sum
+123      | 0.85  | 2.68
+123      | 0.85  | 2.68
 123      | 0.98  | 2.68
 
 
@@ -90,31 +90,31 @@ group_id | score | rank
 select group_id, score, sum(score) over(partition by group_id) partition_sum;
 
 ---output
-group_id | score | rank
-123      | 0.85  | 0.85
-123      | 0.85  | 1.70
+group_id | score | partition_sum
+123      | 0.85  | 2.68
+123      | 0.85  | 2.68
 123      | 0.98  | 2.68
 
 
 
 --to calculate first value of within a partition (group in this case)
 
-select group_id, score, first_value(score) over(partition by group_id order by score asc) partition_sum;
+select group_id, score, first_value(score) over(partition by group_id order by score asc) partition_first;
 
 ---output
-group_id | score | rank
+group_id | score | partition_first
 123      | 0.85  | 0.85
-123      | 0.85  | 1.70
-123      | 0.98  | 2.68
+123      | 0.85  | 0.85
+123      | 0.98  | 0.85
 
 
 
 --to calculate last value of within a partition (group in this case)
 
-select group_id, score, second_value(score) over(partition by group_id order by score asc) partition_sum;
+select group_id, score, last_value(score) over(partition by group_id order by score desc) partition_last;
 
 ---output
-group_id | score | rank
-123      | 0.85  | 0.85
-123      | 0.85  | 1.70
-123      | 0.98  | 2.68
+group_id | score | partition_last
+123      | 0.85  | 0.98
+123      | 0.85  | 0.98
+123      | 0.98  | 0.98
