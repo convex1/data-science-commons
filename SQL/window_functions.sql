@@ -13,10 +13,10 @@
 select group_id, score, dense_rank() over(partition by group_id order by score desc) rank from group_table;
 
 ---output
---- group_id | score | rank
-    123      | 0.98  | 1
-    123      | 0.85  | 2
-    123      | 0.76  | 2
+group_id | score | rank
+123      | 0.98  | 1
+123      | 0.85  | 2
+123      | 0.76  | 2
 
 
 
@@ -61,27 +61,60 @@ select group_id, score, lead(score,1) over(partition by group_id) next_score;
 
 
 
---to calculate running average within a partition (group in this case)
+--to calculate average within a partition (group in this case)
 
-select group_id, score, avg(score) over(partition by group_id) running_average;
+select group_id, score, avg(score) over(partition by group_id) partition_average;
 
 ---output
---- group_id | score | rank
-    123      | 0.85  | 0.85
-    123      | 0.85  | 0.85
-    123      | 0.98  | 0.893
-
+group_id | score | rank
+123      | 0.85  | 0.85
+123      | 0.85  | 0.85
+123      | 0.98  | 0.893
 
 
 
 --to calculate running sum within a partition (group in this case)
 
-select group_id, score, sum(score) over(partition by group_id) running_sum;
+select group_id, score, sum(score) over(partition by group_id) partition_sum;
 
 ---output
---- group_id | score | rank
-    123      | 0.85  | 0.85
-    123      | 0.85  | 1.70
-    123      | 0.98  | 2.68
+group_id | score | rank
+123      | 0.85  | 0.85
+123      | 0.85  | 1.70
+123      | 0.98  | 2.68
 
 
+
+--to calculate total sum of values (score) within a partition (group in this case)
+
+select group_id, score, sum(score) over(partition by group_id) partition_sum;
+
+---output
+group_id | score | rank
+123      | 0.85  | 0.85
+123      | 0.85  | 1.70
+123      | 0.98  | 2.68
+
+
+
+--to calculate first value of within a partition (group in this case)
+
+select group_id, score, first_value(score) over(partition by group_id order by score asc) partition_sum;
+
+---output
+group_id | score | rank
+123      | 0.85  | 0.85
+123      | 0.85  | 1.70
+123      | 0.98  | 2.68
+
+
+
+--to calculate last value of within a partition (group in this case)
+
+select group_id, score, second_value(score) over(partition by group_id order by score asc) partition_sum;
+
+---output
+group_id | score | rank
+123      | 0.85  | 0.85
+123      | 0.85  | 1.70
+123      | 0.98  | 2.68
