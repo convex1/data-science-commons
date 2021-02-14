@@ -1,9 +1,9 @@
 ---input
 ---group_table
---- group_id | score | char_value
---- 123      | 0.85  |  A
---- 123      | 0.85  |  B
---- 123      | 0.98  |  C
+group_id | score | char_value
+123      | 0.85  |  A
+123      | 0.85  |  B
+123      | 0.98  |  C
 
 
 
@@ -24,5 +24,5 @@ select group_id, string_agg(char_value, ',') as char_values from group_table
 group by group_id;
 
 ---output
---- group_id | char_values
-    123      | A,B,C
+group_id | char_values
+123      | A,B,C
