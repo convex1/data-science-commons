@@ -3,10 +3,15 @@
 items_list = [1,2,3,4,5]
 
 
-#sort the list
+#sort the list - this returns a new list which is sorted
 sorted(items_list)
 sorted(items_list, reverse=True)
 
+#sortin in place i.e. modifying the list itself to be sorted
+items_list.sort()
+
+#reverse list
+items_list.reverse()
 
 #insert element to the list
 #the code below inserts value 1 to index 0
