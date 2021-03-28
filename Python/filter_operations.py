@@ -27,6 +27,7 @@ These are some common ways to filter your dataframe
 
 dragon_ball_on_earth[dragon_ball_on_earth['name'] == "goku"]
 dragon_ball_on_earth[dragon_ball_on_earth['name'].isnull()]
+dragon_ball_on_earth[dragon_ball_on_earth['name'].notnull()]
 dragon_ball_on_earth[dragon_ball_on_earth['name'].isna()]
 dragon_ball_on_earth[dragon_ball_on_earth['name'] < "a"]
 
