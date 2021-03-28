@@ -26,7 +26,7 @@ Vector operation is better than Scala operations.
 create dummy dataframe about dragon ball z characters earth location and other information
 """
 
-data = {"name": ["goku", "gohan"], "city": ["NY", "SEA"]}
+data = {"name": ["goku", "gohan"], "power": [200, 400], city": ["NY", "SEA"]}
 dragon_ball_on_earth = pd.DataFrame(data=data)
 
 """
