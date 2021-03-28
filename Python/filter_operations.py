@@ -36,6 +36,8 @@ there is one single condition and one single outcome except the default
 
 dragon_ball_on_earth['is_goku'] = np.where(dragon_ball_on_earth['name'] == "goku", 1, 0)
 
+characters_with_power_100_or_more = np.where((dragon_ball_on_earth['name'].isnotnull()) & (dragon_ball_on_earth['power'] > 100), 1, 0)
+
 #you can also just get the indices of the rows that satisfy your condition
 dataframe_indices = np.where(dragon_ball_on_earth['name'] == "goku")
 
