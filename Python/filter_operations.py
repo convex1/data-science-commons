@@ -1,9 +1,22 @@
 import pandas as pd
 import numpy as np
 
+
+"""
+Common filter values:
+These are some common ways to filter your dataframe
+"""
+
+dragon_ball_on_earth[dragon_ball_on_earth['name'] == "goku"]
+dragon_ball_on_earth[dragon_ball_on_earth['name'].isnull()]
+dragon_ball_on_earth[dragon_ball_on_earth['name'].isna()]
+dragon_ball_on_earth[dragon_ball_on_earth['name'] < "a"]
+
+
 """
 ~~ABOUT~~
-Use vectorization instead of using for loops to assign new values. Try to do it whenever possible.
+Use vectorization instead of using for loops to assign new values. 
+You can use them to filter values easily. Try to do it whenever possible.
 It will be possible in most cases except a few minor complicated cases where for loop might be required.
 Vector operation is better than Scala operations.
 """
@@ -43,5 +56,4 @@ outcomes = [1,2]
 #conditions and outcomes are from the assigned variables above
 #zero below is the default value to be assigned in case the conditions are not satisfied
 dragon_ball_on_earth['coded_name'] = np.select(conditions, outcomes, 0)
-
 
