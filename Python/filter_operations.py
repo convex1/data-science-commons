@@ -4,7 +4,8 @@ import numpy as np
 """
 ~~ABOUT~~
 Use vectorization instead of using for loops to assign new values. Try to do it whenever possible.
-It will be possible in most cases except a few minor comlicated cases where for loop might be required.None
+It will be possible in most cases except a few minor complicated cases where for loop might be required.
+Vector operation is better than Scala operations.
 """
 
 
@@ -22,6 +23,9 @@ there is one single condition and one single outcome except the default
 
 dragon_ball_on_earth['is_goku'] = np.where(dragon_ball_on_earth['name'] == "goku", 1, 0)
 
+#you can also just get the indices of the rows that satisfy your condition
+dataframe_indices = np.where(dragon_ball_on_earth['name'] == "goku")
+
 
 """
 How to assign the series column based on multiple conditions?
@@ -31,7 +35,13 @@ np.select() can take multiple conditions and multiple outcomes
 
 """
 
-conditions =[[dragon_ball_on_earth['name'] == "goku"], [dragon_ball_on_earth['name'] == "gohan"]]
+conditions =[[dragon_ball_on_earth['name'] == "goku"],
+             [dragon_ball_on_earth['name'] == "gohan"],
+             [dragon_ball_on_earth['power_level'].isin([100, 200, 400])]]
 outcomes = [1,2]
 
-dragon_ball_on_earth['coded_name'] = np.select(conditions, 1, 0)
+#conditions and outcomes are from the assigned variables above
+#zero below is the default value to be assigned in case the conditions are not satisfied
+dragon_ball_on_earth['coded_name'] = np.select(conditions, outcomes, 0)
+
+
