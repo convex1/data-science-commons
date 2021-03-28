@@ -1,10 +1,28 @@
 import pandas as pd
 import numpy as np
 
+"""
+create dummy dataframe about dragon ball z characters earth location and other information
+"""
+
+data = {"name": ["goku", "gohan"], "power": [200, 400], city": ["NY", "SEA"]}
+dragon_ball_on_earth = pd.DataFrame(data=data)
 
 """
+
+~~ABOUT~~
+Use vectorization instead of using for loops to assign new values. 
+You can use them to filter values easily. Try to do it whenever possible.
+It will be possible in most cases except a few minor complicated cases where for loop might be required.
+Vector operation is better than Scala operations.
+
+"""
+
+"""
+
 Common filter values:
 These are some common ways to filter your dataframe
+
 """
 
 dragon_ball_on_earth[dragon_ball_on_earth['name'] == "goku"]
@@ -14,24 +32,10 @@ dragon_ball_on_earth[dragon_ball_on_earth['name'] < "a"]
 
 
 """
-~~ABOUT~~
-Use vectorization instead of using for loops to assign new values. 
-You can use them to filter values easily. Try to do it whenever possible.
-It will be possible in most cases except a few minor complicated cases where for loop might be required.
-Vector operation is better than Scala operations.
-"""
 
-
-"""
-create dummy dataframe about dragon ball z characters earth location and other information
-"""
-
-data = {"name": ["goku", "gohan"], "power": [200, 400], city": ["NY", "SEA"]}
-dragon_ball_on_earth = pd.DataFrame(data=data)
-
-"""
 create new series (column) by using vectorization
 there is one single condition and one single outcome except the default
+
 """
 
 dragon_ball_on_earth['is_goku'] = np.where(dragon_ball_on_earth['name'] == "goku", 1, 0)
