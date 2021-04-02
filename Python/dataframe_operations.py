@@ -28,3 +28,17 @@ Join/Merge two dataframes
 pd.merge(name_data_one, name_data_two, on = "name", how="inner")
 
 
+"""
+Loop over dataframes
+
+"""
+
+#using itterows()
+#following will iterate over and print each index and name column for that rows in that index
+for index, row in name_data_one.iterows():
+    print(index, row["name"])
+
+#using iteritems()
+#following will iterate over and print each column and full column series
+for column_name, column_series in name_data_one.iteritems():
+    print(column_name, column_series)
