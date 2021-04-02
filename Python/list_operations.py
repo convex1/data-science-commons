@@ -23,7 +23,7 @@ items_list.pop()
 items_list.pop(1)
 
 
-#list comprehensiions
+#list comprehensiions -- an easy way to create lists
 even_numbers_only = [x for x in items_list if x % 2 === 0]
 square_each_element = [x ** 2 for x in items_list]
 
