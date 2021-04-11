@@ -1,3 +1,29 @@
+"""
+
+BINARY TREE IS ONE OF THE COMMON DATA STRUCTURES
+
+Binary tree has two possible childs for each node (parent node)
+
+                  root node
+                    /    \
+                   /      \
+        child node 1      child node 2
+          /  \
+        /     \
+child node 1  child node 2
+
+
+There are two traversal operations - breadth first search and depth first search
+
+breadth first traversal - we go by each level of the tree - horizontally first for each level
+depth first traversal - we go by each depth i.e. going vertically down to the bottom from the node first,
+then going on the next horizontal node.
+
+
+"""
+
+
+
 from collections import deque
 
 class TreeNode:
