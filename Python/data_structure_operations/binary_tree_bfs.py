@@ -19,6 +19,7 @@ breadth first traversal - we go by each level of the tree - horizontally first f
 depth first traversal - we go by each depth i.e. going vertically down to the bottom from the node first,
 then going on the next horizontal node.
 
+Complexity - O(N) - since it traverses across all nodes
 
 """
 
