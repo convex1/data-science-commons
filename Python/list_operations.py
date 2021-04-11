@@ -40,5 +40,23 @@ strings_starting with_a  = [x for x in items_list if x[0] == "a"]
 ''.join(string_list)
 
 
+"""
 
+USING  - queue - FIFO
+
+
+"""
+ from collections import deque
+
+queue = deque([1,2,3,4,5])
+
+#you can remove the first element in the queue easily. It is optimized for that
+queue.popleft()
+
+#you can also remove the last element
+queue.pop()
+
+#you can add element on left or right of the queue
+queue.append(6)
+queue.appendleft(0)
 
