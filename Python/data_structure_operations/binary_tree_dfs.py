@@ -68,7 +68,7 @@ def main():
     root.right.right = TreeNode(5)
     root.right.left.left = TreeNode(20)
     root.right.left.right = TreeNode(17)
-    print("Traverse binary tree by level", traverse(root))
+    print("Traverse binary tree by vertical depth", traverse(root))
 
 
 main()
